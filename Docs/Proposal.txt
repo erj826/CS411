@@ -3,10 +3,7 @@ Project Proposal:
 Ideas:
 
 1. Apartment Fantasy Sports
-
-
-
-
+For this app, we will take user input to generate a fantasy league for whatever you want. We will start by modeling it on Dancing With the Stars. There will use a table for users and their scores as well as a table for rules and competitions. The APIs we are going to use are braintree for payments and facebook for likes and shares. Our long-term vision is for users to be able to create their own competitions by assigning points to actions. All their friends will have the option to buy in and the app will generate a game for them.
 
 
 2. Political Crash Course
