@@ -14,3 +14,15 @@ them. A given contest will have an admin that is responsible for updating the sc
 
 
 2. Political Crash Course
+
+
+
+
+
+
+3. My Songs Are Better
+This web app will allow users to go head to head and compete to see who's got a better playlist. Similar to Fantasy Football,
+users will draft a lineup of 10 songs. At the end of a one week period, two lineups will be compared to see who received more
+listens that week. Get more listens than your competitor, you win. We will also add an option to restrict which songs or 
+genre's can be used in a given contest, or offer a random category generator to add a challenge for users. Our database will
+contain users and rosters for a given week. We will also allow users to listen to their friend's playlists. We are going to accomplish this by using the Spotify API, and the Facebook API. At the end of a week (or other pre-specified period of time) the winner will be announced and friends will be able to see the results. 
