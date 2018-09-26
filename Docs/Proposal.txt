@@ -19,6 +19,18 @@ announced and friends will be able to see the results.
 ******************************************************************************************************************************
 
 
+3. Political Crash Course
+ 
+This app will draw from the NPR API and the Fox News API to provide a full spectrum of political opinion on a topic. The user 
+will log in through Twitter, input a topic and the app will generate a brief for them. Briefs can be specified for length and 
+type of media (articles, tweets, podcasts, etc.). It will also suggest Twitter accounts to follow that are relevant to the topic 
+you have searched. The database will keep track of what you have searched so it can suggest more topics for you. You can also 
+save briefs you like to share with your friends, also through Twitter.
+
+
+******************************************************************************************************************************
+
+
 2. Apartment Fantasy Sports
 
 For this app, we will take user input to generate a fantasy league for whatever the user wants. For example, this could be
@@ -29,20 +41,6 @@ are Braintree (to handle payment for entering competitions) and Facebook (to pro
 share their competitions or results). We may also use a news API to make suggestions for possible competitions for our users.
 The user and their friends will have the option to buy in to contests, and the app will generate and keep track of a game for
 them. A given contest will have an admin that is responsible for updating the score.
-
-
-******************************************************************************************************************************
-
-
-3. Political Crash Course
- 
-
-
-
-
-
-
-
 
 
 ******************************************************************************************************************************
