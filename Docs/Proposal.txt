@@ -1,8 +1,26 @@
 Project Proposal:
 
-Ideas:
+******************************************************************************************************************************
 
-1. Apartment Fantasy Sports
+
+1. My Songs Are Better
+
+This web app will allow users to go head to head and compete to see who's got a better playlist. Similar to Fantasy Football,
+users will draft a lineup of 10 songs. At the end of a one week period, two lineups will be compared to see who received more
+listens that week. Get more listens than your competitor, you win. We will include options to restrict which songs or 
+genre's can be used in a given contest, as well as offer a random category generator to add a challenge for users. 
+
+Our database will contain users and rosters for a given week. We will also allow users to listen to their friend's playlists.
+We are going to accomplish this by using the Spotify API, and the Facebook API. We'll use Oauth to allow a user to log into
+facebook and connect with their friends. At the end of a week (or other pre-specified period of time) the winner will be
+announced and friends will be able to see the results.
+
+
+******************************************************************************************************************************
+
+
+2. Apartment Fantasy Sports
+
 For this app, we will take user input to generate a fantasy league for whatever the user wants. For example, this could be
 fantasy "Bachelor in Paradise" or fantasy "Intramural Soccer". A user will fill out a form with a set of players, a set of
 rules, and a set of associated point values. Our database will include at least two tables: one for users and their scores in
@@ -13,18 +31,18 @@ The user and their friends will have the option to buy in to contests, and the a
 them. A given contest will have an admin that is responsible for updating the score.
 
 
-2. Political Crash Course
+******************************************************************************************************************************
+
+
+3. Political Crash Course
+ 
 
 
 
 
 
 
-3. My Songs Are Better
-This web app will allow users to go head to head and compete to see who's got a better playlist. Similar to Fantasy Football,
-users will draft a lineup of 10 songs. At the end of a one week period, two lineups will be compared to see who received more
-listens that week. Get more listens than your competitor, you win. We will also add an option to restrict which songs or 
-genre's can be used in a given contest, or offer a random category generator to add a challenge for users. Our database will
-contain users and rosters for a given week. We will also allow users to listen to their friend's playlists. We are going to
-accomplish this by using the Spotify API, and the Facebook API. At the end of a week (or other pre-specified period of time)
-the winner will be announced and friends will be able to see the results. 
+
+
+
+******************************************************************************************************************************
