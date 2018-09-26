@@ -3,7 +3,7 @@ Project Proposal:
 ******************************************************************************************************************************
 
 
-1. Listen Up          (Other names could include: Face the Music, Beat It, DJ Duel, Mash Off)
+1. Listen Up          (Other names could include: Face the Music, Beat It, DJ Duel, Mash Off, Beat Off)
 
 This web app will allow users to go head to head and compete to see who's got a better playlist. Similar to Fantasy Football,
 users will draft a lineup of 10 songs. At the end of a one week period, two lineups will be compared to see who received more
