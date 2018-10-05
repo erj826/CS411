@@ -2,11 +2,14 @@ User Stories
 
 1. Target Users
 
+Students who have access to Spotify and who have a competitive spirit.
 
 2. Product description
-Fantasy sports meets music. Listen Up.
+Fantasy sports meets music. Listen Up. 
+
 
 3. Product Logic 
+User logs in. Can view their Facebook friends who also have the app. Choose to challenge their friends. Can pick genre or generate a random genre. Then choose songs to add to their lineup. Competitors cannot see their competition's lineup until they have finished choosing their own. After n amount of time, winner is announced based on number of Spotify listens. 
 
 4. I/O
 User selects a 'roster' of n songs. 
