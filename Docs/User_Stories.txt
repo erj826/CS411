@@ -1,1 +1,15 @@
 User Stories
+
+1. Target Users
+
+
+2. Product description
+Fantasy sports meets music. Listen Up.
+
+3. Product Logic 
+
+4. I/O
+User selects a 'roster' of n songs. 
+App outputs total listens over the course of a week.
+
+5. Mockup <-> User
