@@ -1,1 +1,2 @@
-User Story 1
+User Story 1: Log in & Account Information
+
