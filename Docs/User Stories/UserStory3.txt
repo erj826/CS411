@@ -1,1 +1,3 @@
 User Story 3: Challenging a friend
+
+As a logged-in user, I want to be able to challenge my FB friends who also use Spotify.
