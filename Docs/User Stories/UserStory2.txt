@@ -1,3 +1,6 @@
 User Story 2: Drafting a lineup
 
-Once a contest between two users has been created, each user will draft a lineup of 10 songs. There may be a genre constraint for a contest, there may not be. Users will pick songs via Spotify, and pressing an [Add] button to select the song for the contest. Once the complete rosters from both players are written to the database, the players will be able to see their competitors songs, and track their progress throughout the course of a week. 
+Once a contest between two users has been created, each user will draft a lineup of 10 songs. There may be a genre constraint
+for a contest, there may not be. Users will pick songs via Spotify, and pressing an [Add] button to select the song for the
+contest. Once the complete rosters from both players are written to the database, the players will be able to see their
+competitors songs, and track their progress throughout the course of a week. 
