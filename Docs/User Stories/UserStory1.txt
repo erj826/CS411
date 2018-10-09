@@ -1,2 +1,4 @@
 User Story 1: Log in & Account Information
 
+Users will first see the log in page with two blanks indicating "Username" and "Password". If the users already have an account, they will be able to log in directly by typing in their account information. If not, they will have to click on the button below that says "Create a new account" or "Sign in with Facebook", which will both direct them to a new page to either typing in for a new account or sign in directly with Facebook. Users will also see a button next to "Password" with "Forget your password?" for retrieve or re-typein the new password. 
+Then the users will be able to log in.
