@@ -1,3 +1,11 @@
 User Story 3: Challenging a friend
 
-As a logged-in user, I want to be able to challenge my FB friends who also use Spotify to come up with a better playlist than the one I have created. Once I have created my playlist (see User Story 2) I will be able to select this playlist and click [Challenge a Friend] which will then pull up a search bar and an accompanying list of FB/Spotify friends. I'll be able to search for friends this way, or scroll to find a friend. Once I find the friend I want to challenge I will click [Challenge] and a request to compete against my playlist will be sent to this friend. They will be able to choose [Accept] or [Reject]. If they choose [Accept], a chance to choose songs for their competing playlist will be made available to them and I will receive a notification, or if they choose [Reject], I will receive a notification and the option to [Challenge] a  friend will be made available to me again. I will also be able to [Rescind] a challenge request once it's been sent. Once a friend has accepted my challenge and made a playlist, however, the competition will go live! When [n] amount of time has passed by, the # of listens is totaled and a winner/loser is notified.
+As a logged-in user, I want to be able to challenge my FB friends who also use Spotify to come up with a better playlist than the one 
+I have created. Once I have created my playlist (see User Story 2) I will be able to select this playlist and click 
+[Challenge a Friend] which will then pull up a search bar and an accompanying list of FB/Spotify friends. I'll be able to search
+for friends this way, or scroll to find a friend. Once I find the friend I want to challenge I will click [Challenge] and a request
+to compete against my playlist will be sent to this friend. They will be able to choose [Accept] or [Reject]. If they choose [Accept], 
+a chance to choose songs for their competing playlist will be made available to them and I will receive a notification, or if they
+choose [Reject], I will receive a notification and the option to [Challenge] a  friend will be made available to me again. I will 
+also be able to [Rescind] a challenge request once it's been sent. Once a friend has accepted my challenge and made a playlist, 
+however, the competition will go live! When [n] amount of time has passed by, the # of listens is totaled and a winner/loser is notified.
