@@ -1,7 +1,6 @@
 // modules =================================================
 var express        = require('express');
 var app            = express();
-var mongoose       = require('mongoose');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var cors           = require('cors');
@@ -9,9 +8,21 @@ var querystring    = require('querystring');
 var cookieParser   = require('cookie-parser');
 
 // configuration ===========================================
-	
-// config files
-var db = require('./config/db');
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/mydb";
+
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("ListenUp");
+  dbo.createCollection("Songs", function(err, res) {
+    if (err) throw err;
+    console.log("Collection created!");
+    db.close();
+  });
+});
+
 
 var port = process.env.PORT || 8080; // set our port
 // mongoose.connect(db.url); // connect to our mongoDB database (commented out after you enter in your own credentials)
