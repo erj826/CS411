@@ -19,7 +19,6 @@ MongoClient.connect(url, function(err, db) {
   dbo.createCollection("Songs", function(err, res) {
     if (err) throw err;
     console.log("Song collection created!");
-    db.close();
   });
   dbo.createCollection("Users", function(err, res) {
     if (err) throw err;
