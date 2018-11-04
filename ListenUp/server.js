@@ -18,7 +18,12 @@ MongoClient.connect(url, function(err, db) {
   var dbo = db.db("ListenUp");
   dbo.createCollection("Songs", function(err, res) {
     if (err) throw err;
-    console.log("Collection created!");
+    console.log("Song collection created!");
+    db.close();
+  });
+  dbo.createCollection("Users", function(err, res) {
+    if (err) throw err;
+    console.log("User collection created!");
     db.close();
   });
 });
