@@ -21,6 +21,18 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $au
     }
 
 	///// END DEMO
-
+/*
+      $scope.demo2 = function(demosongtitle) {
+            $.ajax({
+                url: "https://api.spotify.com/v1/search"
+                headers: {
+                  'Authorization': 'Bearer ' + $scope.token
+                },
+                success: function(response) {
+                  console.log(response);
+                }
+            });
+    }
+*/
 
 });

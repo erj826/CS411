@@ -25,7 +25,7 @@ MongoClient.connect(url, function(err, db) {
     console.log("User collection created!");
     db.close();
   });
-});
+}); 
 
 
 var port = process.env.PORT || 8080; // set our port
