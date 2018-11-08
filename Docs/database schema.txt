@@ -1,0 +1,107 @@
+db.createCollection("song", {
+    validator: {
+	$jsonSchema: {
+	    bsonType: "object",
+	    required: ["title", "artist", "popularity", "id"]
+	    properties: {
+	        title:{
+		    bsonType: "string",
+		    description: "must be a string and is required"
+		},
+		artist: {
+		    bsonType: "string",
+		    description: "must be a string and is required"
+		},
+		popularity:{
+		    bsonType: "int",
+		    minimum: 0,
+		    maximum: 100,
+		    exclusiveMaximum: false,
+		    description: "must be an integer in [0, 100] and is 		    required"
+		},
+		ID: {
+		    bsonType: "string",
+		    description: "must be a string and is required"
+		}
+	    }
+	}
+    }
+})
+
+db.createCollection("user", {
+    validator: {
+	$jsonSchema: {
+	    bsonType: "object",
+	    required: ["name", "score", "gender", "friendList"]
+	    properties: {
+		_id: {
+		    bsonType: "objectId"
+		},
+		name: {
+		    bsonType: "string",
+		    description: "must be a string and is required"
+		},
+       		score: {
+		    bsonType: "int",
+		    minimum: 0,
+		    exclusiveMinimum: false,
+		    description: "must be an integer in [0, ] and is 					required"
+		},
+		gender: {
+		    bsonType: "enum": ["M", "F", "not listed"],
+               	    description: "can only be one of the enums and is 					required"
+		},
+		friendList: {
+		    bsonType: "array",
+		    description: "can be either array of strings or array of 				objects"
+		}
+	    }
+	}
+    }
+})
+
+db.createCollection("competition", {
+    validator: {
+	$jsonSchema: {
+	    bsonType: "object",
+	    required: ["date", "playerOne", "playerTwo", "result"]
+	    properties: {
+		id: {
+		    bsonType: "objectId"
+		},
+		date: {
+		    bsonType: "date",
+		    pattern: "YYYY-MM-DDTHH:mm:ss.mmm<+/-Offset>",
+		    description: "must be date type and match the regular 				expression pattern"
+		},
+	        playerOne: {
+		    bsonType: "object",
+		    required: ["id", "playerOneScore"],
+		    properties: {
+			id: {
+			    bsonType: "string",
+			    description: "must be a string and is required"
+			},
+			playerOneScore: {
+			    bsonType: "int"
+			}
+		    }
+		},
+		playerTwo: {
+		    bsonType: "object",
+		    required: ["id", "playerTwoScore"],
+			id: {
+			    bsonType: "string",
+			    description: "must be a string and is required"
+			},
+			playerTwoScore: {
+			    bsonType: "int"
+		},
+		result: {
+		    bsonType: "enum": ["playerOne Win!", "playerTwo Win!", 				    "draw"],
+		    description: "must be one of the enums and is required"
+		}
+	    }
+	}
+    }
+})
