@@ -19,7 +19,7 @@ db.createCollection("song", {
 		    exclusiveMaximum: false,
 		    description: "must be an integer in [0, 100] and is required"
 		},
-		ID: {
+		id: {
 		    bsonType: "string",
 		    description: "must be a string and is required"
 		}
@@ -32,7 +32,7 @@ db.createCollection("user", {
     validator: {
 	$jsonSchema: {
 	    bsonType: "object",
-	    required: ["name", "score", "gender", "friendList"]
+	    required: ["name", "score", "gender", "friendList", "competitions"]
 	    properties: {
 		_id: {
 		    bsonType: "objectId"
@@ -54,6 +54,10 @@ db.createCollection("user", {
 		friendList: {
 		    bsonType: "array",
 		    description: "can be either array of strings or array of objects"
+		},
+		competitions: {
+		    bsonTypes: "array",
+		    description: "must be array of objects that each competition's id is presented"
 		}
 	    }
 	}
@@ -76,9 +80,9 @@ db.createCollection("competition", {
 		},
 	        playerOne: {
 		    bsonType: "object",
-		    required: ["id", "playerOneScore"],
+		    required: ["userId", "playerOneScore"],
 		    properties: {
-			id: {
+			userId: {
 			    bsonType: "string",
 			    description: "must be a string and is required"
 			},
@@ -89,8 +93,8 @@ db.createCollection("competition", {
 		},
 		playerTwo: {
 		    bsonType: "object",
-		    required: ["id", "playerTwoScore"],
-			id: {
+		    required: ["userId", "playerTwoScore"],
+			userId: {
 			    bsonType: "string",
 			    description: "must be a string and is required"
 			},
