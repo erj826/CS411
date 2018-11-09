@@ -1,8 +1,8 @@
-angular.module('MainCtrl', []).controller('MainController', function($scope, $auth) {
+angular.module('MainCtrl', []).controller('MainController', function($scope, $auth, $http) {
 
 	$scope.tagline = 'Play the game here';
 	$scope.token = $auth.getToken();
-
+    
 
 	///// DEMO
 
@@ -21,18 +21,27 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $au
     }
 
 	///// END DEMO
-/*
-      $scope.demo2 = function(demosongtitle) {
-            $.ajax({
-                url: "https://api.spotify.com/v1/search"
-                headers: {
-                  'Authorization': 'Bearer ' + $scope.token
-                },
-                success: function(response) {
-                  console.log(response);
-                }
-            });
-    }
-*/
 
+    $scope.demo2 = function (demosongtitle) {
+        console.log("demosongtitle", $scope.demosongtitle, demosongtitle);
+        $http({
+            method: 'GET',
+            url: "https://api.spotify.com/v1/search",
+            params: {
+                q: demosongtitle, 
+                type: "track"
+            },
+            headers: {
+                'Authorization': 'Bearer ' + $scope.token
+            }
+        }).then(
+            function (response) {
+                $scope.items = response.data.tracks.items;
+                console.log("Success!", $scope.items);
+            },
+            function (response) {
+                console.log("Didn't work!", response.data.error.message);
+            }
+        );
+    }   
 });

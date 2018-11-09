@@ -6,5 +6,8 @@
     "angular": "latest",
     "angular-route": "latest",
     "satellizer": "^0.15.5"
+  },
+  "resolutions": {
+    "angular": "1.7.5"
   }
 }

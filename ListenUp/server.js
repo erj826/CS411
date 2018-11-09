@@ -9,23 +9,23 @@ var cookieParser   = require('cookie-parser');
 
 // configuration ===========================================
 
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
-
-
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  var dbo = db.db("ListenUp");
-  dbo.createCollection("Songs", function(err, res) {
-    if (err) throw err;
-    console.log("Song collection created!");
-  });
-  dbo.createCollection("Users", function(err, res) {
-    if (err) throw err;
-    console.log("User collection created!");
-    db.close();
-  });
-}); 
+//var MongoClient = require('mongodb').MongoClient;
+//var url = "mongodb://localhost:27017/";
+//
+//
+//MongoClient.connect(url, function(err, db) {
+//  if (err) throw err;
+//  var dbo = db.db("ListenUp");
+//  dbo.createCollection("Songs", function(err, res) {
+//    if (err) throw err;
+//    console.log("Song collection created!");
+//  });
+//  dbo.createCollection("Users", function(err, res) {
+//    if (err) throw err;
+//    console.log("User collection created!");
+//    db.close();
+//  });
+//}); 
 
 
 var port = process.env.PORT || 8080; // set our port
