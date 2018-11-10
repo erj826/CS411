@@ -16,9 +16,16 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 
 		// login page
 		.when('/login', {
-          templateUrl: 'views/login.html',
-          controller: 'LoginController'
+            templateUrl: 'views/login.html',
+            controller: 'LoginController'
 		})
+        
+        // game
+        .when('/play', {
+            templateUrl: 'views/play.html',
+            controller: 'PlayController'
+        })
+    
 
 	$locationProvider.html5Mode(true);
 

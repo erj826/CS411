@@ -21,7 +21,7 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $au
     }
 
 	///// END DEMO
-
+    
     $scope.demo2 = function (demosongtitle) {
         console.log("demosongtitle", $scope.demosongtitle, demosongtitle);
         $http({
