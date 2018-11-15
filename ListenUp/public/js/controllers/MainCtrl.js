@@ -38,8 +38,8 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $au
         }).then(
             function (response) {
                 console.log(response);
-//                $scope.items = response.data.tracks.items;
-//                console.log("Success!", $scope.items);
+                $scope.items = response.data.body.tracks.items;
+                console.log("Success!", $scope.items);
             },
             function (response) {
                 console.log("Didn't work!", response.data.error.message);
