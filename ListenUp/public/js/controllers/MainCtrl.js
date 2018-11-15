@@ -23,10 +23,11 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $au
 	///// END DEMO
     
     $scope.demo2 = function (demosongtitle) {
-        console.log("demosongtitle", $scope.demosongtitle, demosongtitle);
+//        console.log("demosongtitle", $scope.demosongtitle, demosongtitle);
         $http({
             method: 'GET',
-            url: "https://api.spotify.com/v1/search",
+            url: "/search",
+//            url: "https://api.spotify.com/v1/search",
             params: {
                 q: demosongtitle, 
                 type: "track"
@@ -36,8 +37,9 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $au
             }
         }).then(
             function (response) {
-                $scope.items = response.data.tracks.items;
-                console.log("Success!", $scope.items);
+                console.log(response);
+//                $scope.items = response.data.tracks.items;
+//                console.log("Success!", $scope.items);
             },
             function (response) {
                 console.log("Didn't work!", response.data.error.message);
