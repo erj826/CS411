@@ -26,7 +26,7 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $au
 //        console.log("demosongtitle", $scope.demosongtitle, demosongtitle);
         $http({
             method: 'GET',
-            url: "/search",
+            url: "/searchSpotify",
 //            url: "https://api.spotify.com/v1/search",
             params: {
                 q: demosongtitle, 

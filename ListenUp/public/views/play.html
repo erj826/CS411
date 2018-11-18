@@ -7,9 +7,11 @@
     <div class="col-sm-6">
         <div class="form-group">
             Input song here and it will return lyrics with blanks:
-            <input class="form-control" ng-model="song">
-            <button ng-click="lyrics(song)">Play</button><br>
+            <input class="form-control" ng-model="track">
+            <input class="form-control" ng-model="artist">
+            <button ng-click="lyrics(track, artist)">Play</button><br>
         </div>
+        <p>{{x}}</p>
     </div>
     <div class="col-sm-6">
         <div class="form-group">Song:

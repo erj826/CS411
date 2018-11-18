@@ -1,4 +1,4 @@
-angular.module('PlayCtrl', []).controller('PlayController', function($scope, $auth) {
+angular.module('PlayCtrl', []).controller('PlayController', function($scope, $auth, $http) {
 
     $scope.tagline = 'This is where you will play the game';
     
@@ -13,13 +13,31 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
     }
     
     // word delete function
-    $scope.song = "I just can't wait I don't want a lot for Christmas \n There is just one thing I need\n And I don't care about the presents Underneath the Christmas tree I don't need to hang my stocking There upon the fireplace Santa Claus won't make me happy With a toy on Christmas Day"
+    $scope.track = "all I want for christmas is you"
+    $scope.artist = "mariah carey"
     
-    $scope.lyrics = function (song) {
+    $scope.lyrics = function (track, artist) {
         console.log("lyrics is connected");
+        $http({
+            method: 'GET',
+            url: "/searchMusixmatch",
+            params: {
+                q_track: track,
+                q_artist: artist,
+                apikey: '74267314149a0851260eb83eafbf8f18'
+            }
+        }).then(
+            function (response) {
+                console.log("Success!");
+                console.log(response);
+                $scope.x = response.data.body.message.body.lyrics.lyrics_body
+            },
+            function (response) {
+                console.log("Didn't work!")
+            }
+        );
     }
     
     // compare function
     
-
 });
