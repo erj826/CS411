@@ -2,22 +2,16 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
 
     $scope.tagline = 'This is where you will play the game';
     
-    
 
     // shuffle function
     dummy_songs = ['a', 'b', 'c', 'd', 'e'];
-    // return a random order
-    $scope.shuffle = function () {
-        console.log("shuffle is connected");
-        //put function here
-    }
     
     // word delete function
     $scope.track = "all I want for christmas is you"
     $scope.artist = "mariah carey"
     
     $scope.lyrics = function (track, artist) {
-        console.log("lyrics is connected");
+        //console.log("lyrics is connected");
         $http({
             method: 'GET',
             url: "/searchMusixmatch",
@@ -28,16 +22,63 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
             }
         }).then(
             function (response) {
-                console.log("Success!");
-                console.log(response);
-                $scope.x = response.data.body.message.body.lyrics.lyrics_body
+                console.log("Found lyrics successfully!");
+                //console.log(response);
+                $scope.wordsWithBlanks = showTextWithBlanks(response.data.body.message.body.lyrics.lyrics_body);
             },
             function (response) {
                 console.log("Didn't work!")
             }
         );
     }
-    
-    // compare function
+
+
+    function showTextWithBlanks(lyrics) {
+        //Replaces numBlanks words with underscores
+        var numBlanks = 1;
+        $scope.checkLine = {};
+
+        //sanitize lyrics
+        lyrics = lyrics.replace(/\n/g, "NEWLINE").split("NEWLINE");
+
+        for (j=0; j<lyrics.length;j++) {
+            if (lyrics[j] == "") {
+                lyrics.splice(j, 1);
+            }
+        }
+
+        lyrics = lyrics.slice(0,lyrics.length-3)
+
+        var removeWordsAt = getRandomNumbers(numBlanks, lyrics.length);
+
+        for (i=0; i < removeWordsAt.length; i++){
+            index = removeWordsAt[i];
+            $scope.checkLine[index] = lyrics[index]
+            lyrics[index] = "_".repeat(lyrics[index].length + 1)
+        }
+
+        lyrics.push("...");
+        return lyrics;
+    }  
+
+    function getRandomNumbers(n, l) {
+        //Returns n unique random numbers within the range [0,l)
+        var indexesToDelete = [];
+        var num;
+        
+        if (n > l) {
+            n = l;
+        }
+
+        for (i = 0; i < n; i++){
+            do {
+                num = Math.floor(Math.random() * l);
+            } while (indexesToDelete.indexOf(num) >= 0 );
+            
+            indexesToDelete.push(num);
+        }
+
+        return indexesToDelete;
+    }
     
 });

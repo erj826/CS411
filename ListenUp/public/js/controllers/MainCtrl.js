@@ -14,6 +14,8 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $au
                 $location.path('/');
             });
     };
+
+
 	///// DEMO
 
     $scope.demo = function() {
@@ -57,3 +59,19 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $au
         );
     }   
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

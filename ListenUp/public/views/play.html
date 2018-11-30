@@ -1,6 +1,6 @@
-<div class="jumbotron text-center">
-  <h1>Let's Play</h1>
-</div>
+<!-- <div class="jumbotron text-center">
+  <h3>Let's Play</h3>
+</div> -->
 
 <div class="container">
   <div class="row">
@@ -11,7 +11,13 @@
             <input class="form-control" ng-model="artist">
             <button ng-click="lyrics(track, artist)">Play</button><br>
         </div>
-        <p>{{x}}</p>
+
+        <form style="border-style: solid; border-width: 2px; text-align: center;">
+            <br>
+            <span ng-repeat="line in wordsWithBlanks track by $index">{{ line }}<br></span>
+            <br>
+        </form>
+
     </div>
     <div class="col-sm-6">
         <div class="form-group">Song:
