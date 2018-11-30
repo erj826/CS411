@@ -1,9 +1,19 @@
-angular.module('MainCtrl', []).controller('MainController', function($scope, $auth, $http) {
+angular.module('MainCtrl', []).controller('MainController', function($scope, $auth, $http, $location) {
 
 	$scope.tagline = 'Play the game here';
 	$scope.token = $auth.getToken();
     
-
+    $scope.authenticate = function() {
+        $auth.authenticate('spotify')
+            .then(function(response) {
+                console.log("Login successful");
+                $location.path('/play');
+            })
+            .catch(function(response) {
+                console.log("Login failed");
+                $location.path('/');
+            });
+    };
 	///// DEMO
 
     $scope.demo = function() {

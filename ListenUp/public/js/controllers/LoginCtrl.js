@@ -4,7 +4,7 @@ angular.module('LoginCtrl', []).controller('LoginController', function($scope, $
         $auth.authenticate('spotify')
             .then(function(response) {
             	console.log("Login successful");
-                $location.path('/');
+                $location.path('/play');
             })
             .catch(function(response) {
             	console.log("Login failed");
