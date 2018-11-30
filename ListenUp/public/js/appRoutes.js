@@ -13,12 +13,6 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			templateUrl: 'views/profile.html',
 			controller: 'ProfileController'
 		})
-
-		// login page
-		.when('/login', {
-            templateUrl: 'views/login.html',
-            controller: 'LoginController'
-		})
         
         // game
         .when('/play', {
