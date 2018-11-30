@@ -7,8 +7,8 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
     dummy_songs = ['a', 'b', 'c', 'd', 'e'];
     
     // word delete function
-    $scope.track = "all I want for christmas is you"
-    $scope.artist = "mariah carey"
+    $scope.track = "All I Want for Christmas is You"
+    $scope.artist = "Mariah Carey"
     
     $scope.lyrics = function (track, artist) {
         //console.log("lyrics is connected");
