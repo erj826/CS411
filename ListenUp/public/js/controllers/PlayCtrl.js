@@ -2,7 +2,6 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
 
     $scope.tagline = 'This is where you will play the game';
     
-
     // shuffle function
     dummy_songs = ['a', 'b', 'c', 'd', 'e'];
     
