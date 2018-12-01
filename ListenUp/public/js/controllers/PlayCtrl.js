@@ -9,7 +9,7 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
     $scope.track = "All I Want for Christmas is You"
     $scope.artist = "Mariah Carey"
     
-    $scope.lyrics = function (track, artist) {
+    $scope.lyrics = function (track, artist, numBlanks) {
         //console.log("lyrics is connected");
         $http({
             method: 'GET',
@@ -21,9 +21,14 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
             }
         }).then(
             function (response) {
-                console.log("Found lyrics successfully!");
-                //console.log(response);
-                $scope.wordsWithBlanks = showTextWithBlanks(response.data.body.message.body.lyrics.lyrics_body);
+                cpright = response.data.body.message.body.lyrics.lyrics_copyright;
+                
+                if (cpright == "Unfortunately we're not authorized to show these lyrics.") {
+                    $scope.wordsWithBlanks = ["Unable to show lyrics for this song."]
+                } else {
+                    console.log("Found lyrics successfully!");
+                    $scope.wordsWithBlanks = showTextWithBlanks(response.data.body.message.body.lyrics.lyrics_body, numBlanks);
+                }
             },
             function (response) {
                 console.log("Didn't work!")
@@ -32,9 +37,8 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
     }
 
 
-    function showTextWithBlanks(lyrics) {
+    function showTextWithBlanks(lyrics, numBlanks) {
         //Replaces numBlanks words with underscores
-        var numBlanks = 1;
         $scope.checkLine = {};
 
         //sanitize lyrics
@@ -48,12 +52,13 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
 
         lyrics = lyrics.slice(0,lyrics.length-3)
 
-        var removeWordsAt = getRandomNumbers(numBlanks, lyrics.length);
+        $scope.removeWordsAt = getRandomNumbers(numBlanks, lyrics.length);
 
-        for (i=0; i < removeWordsAt.length; i++){
-            index = removeWordsAt[i];
+        for (i=0; i < $scope.removeWordsAt.length; i++){
+            index = $scope.removeWordsAt[i];
             $scope.checkLine[index] = lyrics[index]
-            lyrics[index] = "_".repeat(lyrics[index].length + 1)
+            //lyrics[index] = "_".repeat(lyrics[index].length + 1)
+            lyrics[index] = "BLANKLINE"
         }
 
         lyrics.push("...");
@@ -79,5 +84,6 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
 
         return indexesToDelete;
     }
+
     
 });
