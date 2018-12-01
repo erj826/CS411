@@ -39,7 +39,8 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
 
     function showTextWithBlanks(lyrics, numBlanks) {
         //Replaces numBlanks words with underscores
-        $scope.checkLine = {};
+        $scope.checkLines = {};
+        // var lyricsObject = {};
 
         //sanitize lyrics
         lyrics = lyrics.replace(/\n/g, "NEWLINE").split("NEWLINE");
@@ -56,12 +57,16 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
 
         for (i=0; i < $scope.removeWordsAt.length; i++){
             index = $scope.removeWordsAt[i];
-            $scope.checkLine[index] = lyrics[index]
-            //lyrics[index] = "_".repeat(lyrics[index].length + 1)
+            $scope.checkLines[index] = lyrics[index]
             lyrics[index] = "BLANKLINE"
         }
 
         lyrics.push("...");
+
+        // for (i = 0; i < lyrics.length; i++) {
+        //     lyricsObject[i] = lyrics[i];
+        // }
+
         return lyrics;
     }  
 
@@ -85,5 +90,10 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
         return indexesToDelete;
     }
 
+
+    $scope.guess = ""
+    $scope.check = function (guess) {
+        console.log(guess);
+    };
     
 });

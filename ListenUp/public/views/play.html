@@ -16,22 +16,22 @@
        
         <div style="border-style: solid; border-width: 2px; text-align: center; background-color: #ECF4F9;">
             <br>
-            <div ng-repeat="line in wordsWithBlanks track by $index">
-                <div ng-if=" line != 'BLANKLINE' ">{{ line }}</div>
+                <div ng-repeat="line in wordsWithBlanks track by $index">
+                    <div ng-if=" line != 'BLANKLINE' ">{{ line }}</div>
 
-                <div ng-if= "line == '...'"><br><button ng-click="check()">Check</button><br><br></div>
-
-                <div ng-if=" line == 'BLANKLINE' ">
-                    <input style="margin: auto; width: 66%;" class="form-control" ng-model="guess">
+                    <div ng-if=" line == 'BLANKLINE' ">
+                        <input style="margin: auto; width: 66%;" type="text" ng-model="guess"><br>
+                    </div>
                 </div>
 
-            </div>
+            <button ng-click="check(guess)">Check!</button>
 
-            <br>
+            <br><br>
         </div>
 
     </div>
-    <div class="col-sm-5">
+
+    <div class="col-sm-6">
         <br>
         <div class="form-group">
             <button ng-click="randomSong()">Random Song</button><br><br>
