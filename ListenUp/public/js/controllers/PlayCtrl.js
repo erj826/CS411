@@ -113,20 +113,6 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
     }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     $scope.listen = function () {
         var base_url = "https://open.spotify.com/embed/track/"
 
@@ -237,7 +223,5 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
         return d[ a.length ][ b.length ];
     }
     ///////////////////////////////////////////////////////////////////////
-
-
 
 });
