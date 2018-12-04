@@ -1,13 +1,9 @@
 angular.module('PlayCtrl', []).controller('PlayController', function($scope, $auth, $http) {
 
     $scope.token = $auth.getToken();
-    
-    // shuffle function
-    dummy_songs = ['a', 'b', 'c', 'd', 'e'];
-    
-    // word delete function
     $scope.track = "All I Want for Christmas is You"
     $scope.artist = "Mariah Carey"
+    $scope.trackid = ""
     
     $scope.lyrics = function (track, artist, numBlanks) {
         //console.log("lyrics is connected");
@@ -98,13 +94,14 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
 
 
 
-
     $scope.listen = function () {
+        var base_url = "https://open.spotify.com/embed/track/"
+
         $http({
             method: 'GET',
             url: "/searchSpotify",
             params: {
-                q: $scope.track, 
+                q: $scope.track + " " + $scope.artist, 
                 type: "track"
             },
             headers: {
@@ -113,8 +110,12 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
         }).then(
             function (response) {
                 //console.log(response.data.body.tracks.items[0]);
-                $scope.trackuri = response.data.body.tracks.items[0].uri.split(":")[2];
-                console.log("Success!", "Song id is: " + $scope.trackuri);
+                $scope.trackid = base_url + response.data.body.tracks.items[0].uri.split(":")[2];
+
+                console.log("Success!", $scope.trackid);
+
+                document.getElementById("playback").src = $scope.trackid;
+
             },
             function (response) {
                 console.log("Didn't work!", response.data.error.message);
@@ -132,8 +133,6 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
         x.style.display = "none";
     }
     }
-
-
 
 
 
