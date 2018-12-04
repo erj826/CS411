@@ -25,7 +25,7 @@ bower install
 npm install
 ```
 
-to start up the app server type:
+To start up the app server type:
 
 ```
 node server.js
