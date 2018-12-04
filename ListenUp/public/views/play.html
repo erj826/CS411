@@ -24,7 +24,7 @@
                     </div>
                 </div>
 
-            <button ng-click="check(guess)">Check!</button>
+            <button id="gameOptionCheck" style="display: none;" ng-click="check(guess)">Check!</button>
 
             <br><br>
         </div>
@@ -39,7 +39,7 @@
 
 
         <br><br><br><br><br>
-        <button ng-click="hint()">&emsp;Hint&emsp;</button>
+        <button id="gameOptionHint" style="display: none;" ng-click="hint()">&emsp;Hint&emsp;</button>
 
         <div id="hintHidden" style="display: none;"><br>
             <iframe id="playback" src="" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>

@@ -34,6 +34,8 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
 
 
     function showTextWithBlanks(lyrics, numBlanks) {
+        $scope.gameOptionCheck();
+        $scope.gameOptionHint();
         //Replaces numBlanks words with underscores
         $scope.checkLines = {};
         // var lyricsObject = {};
@@ -129,6 +131,25 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
     if (x.style.display === "none") {
         x.style.display = "block";
         $scope.listen();
+    } else {
+        x.style.display = "none";
+    }
+    }
+
+
+    $scope.gameOptionCheck = function () {
+    var x = document.getElementById("gameOptionCheck");
+    if (x.style.display === "none") {
+        x.style.display = "inline";
+    } else {
+        x.style.display = "none";
+    }
+    }
+
+    $scope.gameOptionHint = function () {
+    var x = document.getElementById("gameOptionHint");
+    if (x.style.display === "none") {
+        x.style.display = "inline";
     } else {
         x.style.display = "none";
     }
