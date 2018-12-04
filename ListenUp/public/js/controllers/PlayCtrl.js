@@ -36,9 +36,7 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
     function showTextWithBlanks(lyrics, numBlanks) {
         $scope.gameOptionCheck();
         $scope.gameOptionHint();
-        //Replaces numBlanks words with underscores
         $scope.checkLines = {};
-        // var lyricsObject = {};
 
         //sanitize lyrics
         lyrics = lyrics.replace(/\n/g, "NEWLINE").split("NEWLINE");
