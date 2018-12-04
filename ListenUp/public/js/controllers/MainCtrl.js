@@ -32,32 +32,7 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $au
             });
     }
 
-	///// END DEMO
-    
-    $scope.demo2 = function (demosongtitle) {
-//        console.log("demosongtitle", $scope.demosongtitle, demosongtitle);
-        $http({
-            method: 'GET',
-            url: "/searchSpotify",
-//            url: "https://api.spotify.com/v1/search",
-            params: {
-                q: demosongtitle, 
-                type: "track"
-            },
-            headers: {
-                'Authorization': 'Bearer ' + $scope.token
-            }
-        }).then(
-            function (response) {
-                console.log(response);
-                $scope.items = response.data.body.tracks.items;
-                console.log("Success!", $scope.items);
-            },
-            function (response) {
-                console.log("Didn't work!", response.data.error.message);
-            }
-        );
-    }   
+	///// END DEMO  
 });
 
 
