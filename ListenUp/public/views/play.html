@@ -14,17 +14,21 @@
             <button ng-click="lyrics(track, artist,5)">Hard</button>
         </div>
        
-        <div style="border-style: solid; border-width: 2px; text-align: center; background-color: #ECF4F9;">
+        <div id="gameBox" style="border-style: solid; border-width: 2px; text-align: center; background-color: #ECF4F9;">
             <br>
                 <div ng-repeat="line in wordsWithBlanks track by $index">
                     <div ng-if=" line != 'BLANKLINE' ">{{ line }}</div>
 
                     <div ng-if=" line == 'BLANKLINE' ">
-                        <input style="margin: auto; width: 66%;" type="text" ng-model="guess"><br>
+                        <input style="margin: auto; width: 66%;" type="text" ng-model="guess[$index]"><br>
                     </div>
                 </div>
 
             <button id="gameOptionCheck" style="display: none;" ng-click="check(guess)">Check!</button>
+
+     
+            <button id="gameOptionPlayAgain" style="display: none;" onclick="location.href='http://localhost:8080/play';">Play again?</button>
+        
 
             <br><br>
         </div>
