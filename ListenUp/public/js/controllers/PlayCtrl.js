@@ -1,6 +1,6 @@
 angular.module('PlayCtrl', []).controller('PlayController', function($scope, $auth, $http) {
 
-    $scope.tagline = 'This is where you will play the game';
+    $scope.token = $auth.getToken();
     
     // shuffle function
     dummy_songs = ['a', 'b', 'c', 'd', 'e'];
@@ -95,5 +95,60 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
     $scope.check = function (guess) {
         console.log(guess);
     };
+
+
+
+
+    $scope.listen = function () {
+        $http({
+            method: 'GET',
+            url: "/searchSpotify",
+            params: {
+                q: $scope.track, 
+                type: "track"
+            },
+            headers: {
+                'Authorization': 'Bearer ' + $scope.token
+            }
+        }).then(
+            function (response) {
+                //console.log(response.data.body.tracks.items[0]);
+                $scope.trackuri = response.data.body.tracks.items[0].uri.split(":")[2];
+                console.log("Success!", "Song id is: " + $scope.trackuri);
+            },
+            function (response) {
+                console.log("Didn't work!", response.data.error.message);
+            }
+        );
+    }
+
+
+    $scope.hint = function () {
+    var x = document.getElementById("hintHidden");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        $scope.listen();
+    } else {
+        x.style.display = "none";
+    }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     
+
+
+
+
+
 });

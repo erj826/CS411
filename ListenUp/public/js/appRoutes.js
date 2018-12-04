@@ -7,12 +7,6 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			templateUrl: 'views/home.html',
 			controller: 'MainController'
 		})
-
-		// profile page
-		.when('/profile', {
-			templateUrl: 'views/profile.html',
-			controller: 'ProfileController'
-		})
         
         // game
         .when('/play', {

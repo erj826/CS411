@@ -1,4 +1,4 @@
-var app = angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'ProfileCtrl', 'PlayCtrl', 'ProfileService', 'satellizer']);
+var app = angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'PlayCtrl', 'satellizer']);
 
 app.config(['$authProvider', function($authProvider) {
     $authProvider.spotify({
