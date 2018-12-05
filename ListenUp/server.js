@@ -9,7 +9,46 @@ var cookieParser   = require('cookie-parser');
 var request = require('request');
 var client_id = "9847de7e050444c6a47dc18881b7af45";
 var client_secret = "33ee9b8881be482d8a1c97f68c5f2088";
+var database_password = "listenup"
 let access_token;
+
+
+var mongoose = require('mongoose')
+var db = mongoose.connect('mongodb://tallulahkay:' + database_password + '@listenup-shard-00-00-cqpm8.mongodb.net:27017,listenup-shard-00-01-cqpm8.mongodb.net:27017,listenup-shard-00-02-cqpm8.mongodb.net:27017/test?ssl=true&replicaSet=ListenUp-shard-0&authSource=admin&retryWrites=true', function(err, response) {
+    if (err){
+        console.log(err);
+    }
+    else {
+        console.log("we're connected to" + db, '+', response);
+    }
+});
+
+var songSchema = new mongoose.Schema({
+    track: String
+})
+    
+var Song = mongoose.model('Song', songSchema);
+
+app.post('/saveSong', function(req, res) {
+    var song = new Song(req.body);
+    song.save()
+        .then(item => {
+        res.send("item saved to database");
+    })
+    .catch(err => {
+        res.status(400).send("unable to save to database");
+    })
+});
+
+app.get('/getSong', function(req,res){
+    model.find({}, function(err,data){
+        if(err) {
+            res.send(err);
+        } else {
+            res.send(data);
+        }
+    });
+})
 
 // configuration ===========================================
 
@@ -76,13 +115,34 @@ app.get('/searchSpotify', function (req, res) {
 });
 
 app.get('/searchMusixmatch', function (req, res) {
+    let track = req.query.q_track;
+    let artist = req.query.q_artist;
+//    var search = Song.search({
+//        track: req.query.q_track,
+//        artist: req.query.q_artist
+//    }, function (err, docs) {
+//        if (!err) {
+//            console.log(docs);
+//            res.send(docs)
+//        }
+//    });
     var searchMusixmatch = {
         url: 'http://api.musixmatch.com/ws/1.1/matcher.lyrics.get?' + querystring.stringify(req.query),
         json: true
     };
     request.get(searchMusixmatch, function (error, response, body) {
         if (!error) {
-            res.json(response);
+            Song.create({
+                track: track
+            }, function(err, track) {
+                if (err) return console.error(err);
+                console.log("saved!");
+            });
+            Song.find(function(err, songs) {
+                if (err) return console.error(err);
+                console.log(songs);
+            })
+            res.send(response);
         }
     });
 });
