@@ -8,7 +8,7 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
     
     $scope.lyrics = function (track, artist, numBlanks) {
         var x = document.getElementById("gameBox");
-        x.style.backgroundColor = "#ECF4F9";
+        x.style.backgroundColor = "#e5ffe5";
         $http({
             method: 'GET',
             url: "/searchMusixmatch",
@@ -19,6 +19,7 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
             }
         }).then(
             function (response) {
+                try {
                 cpright = response.data.body.message.body.lyrics.lyrics_copyright;
                 
                 if (cpright == "Unfortunately we're not authorized to show these lyrics.") {
@@ -26,6 +27,9 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
                 } else {
                     console.log("Found lyrics successfully!");
                     $scope.wordsWithBlanks = showTextWithBlanks(response.data.body.message.body.lyrics.lyrics_body, numBlanks);
+                } 
+                } catch {
+                    console.log("Couldn't find the song.")
                 }
             },
             function (response) {
