@@ -1,8 +1,10 @@
 <!-- HEADER -->
 
 <div class="container">
-  <!--<div class="row">
-    <div class="col-sm-6">-->
+	
+  <div class="row">
+	  
+	<div class="column">
 	<div id="left">
         <div class="form-group">
             Song: <input class="form-control" ng-model="track">
@@ -10,10 +12,18 @@
 			<div class="form-group">
 		</div>
 		</div>
-		
+		<br>
         <button ng-click="randomSong()">Pick Random Song</button><br><br>
+    <!--HINTTTTTTTT-->
+		<button id="gameOptionHint" style="display: none;" ng-click="hint()">&emsp;Hint&emsp;</button>
+
+        <div id="hintHidden" style="display: none;"><br>
+            <iframe id="playback" src="" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </div>
+	</div>
     </div>
 	
+	<div class="column">
 	<div id="right">
         <h2>Choose Difficulty:</h2>
 		
@@ -21,7 +31,7 @@
             <button ng-click="lyrics(track, artist,3)">Medium</button>
             <button ng-click="lyrics(track, artist,5)">Hard</button>
         <br><br>
-       
+	   
         <div id="gameBox">
 
             <br>
@@ -38,24 +48,18 @@
      
             <button id="gameOptionPlayAgain" style="display: none;" onClick="window.location.reload()">Play again?</button>
         
-
             <br><br>
         </div>
 		</div>
+	  </div>
 
     </div>
 
         <br><br><br>
-        <button id="gameOptionHint" style="display: none;" ng-click="hint()">&emsp;Hint&emsp;</button>
-
-        <div id="hintHidden" style="display: none;"><br>
-            <iframe id="playback" src="" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-        </div>
+        
 		
 		<div id="spotspace"></div>
 	    <img src="spot.png" height="30" width="30">
 		<a href="/">Logout</a>
-
-    <!--</div>
-  </div>-->
+        <br><br><br>
 </div>

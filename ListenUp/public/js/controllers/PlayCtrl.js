@@ -162,7 +162,7 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
     if (x.style.display === "none") {
         x.style.display = "inline";
     } else {
-        x.style.display = "none";
+        x.style.display = "inline";
     }
     }
 
