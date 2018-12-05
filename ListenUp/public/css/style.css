@@ -1,1 +1,96 @@
-body { padding-top:30px; }
+body { 
+  padding-top:100px; 
+  background: linear-gradient(#3d4756, #3b35e0);
+  margin-bottom: 300px
+}
+
+h1 {
+	font-size: 100px;
+    /*background: -webkit-linear-gradient(rgb(232,227,51), rgb(196,255,51));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;*/
+	font-family: "Calibri";
+	color: rgb(200,227,51);
+	font-weight: bold;
+	text-align: center;
+	font-style: italic;
+	text-shadow: -4px 2px purple;/*, -6px 4px rgb(196,255,51);*/
+	letter-spacing: 4px;
+	text-transform: uppercase;
+}
+
+button {
+	color: rgb(200,227,51);
+	border-radius: 4px;
+	background-color: #3b35e0;
+	border-color: black;
+	border-width: 1px;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+a {
+  color: rgb(200,227,51);
+}
+
+.form-group {
+  color: rgb(200,227,51);
+  text-shadow: -2px 1px purple;
+  background-color: transparent;
+  text-align: center;
+  border-color: transparent;
+  font-family: Calibri;
+  font-weight:bold;
+  font-style: italic;
+  font-size: 32px;
+}
+
+h2 {
+  color: rgb(200,227,51);
+  text-shadow: -2px 1px purple;
+  font-family: Calibri;
+  font-size: 32px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.form-control {
+  text-align: center;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+
+.container {
+text-align:center;
+}
+
+#titlespace {
+	padding-top: 30px;
+}
+
+#spotspace {
+  padding-top: 30px;
+}
+
+#wavesR {
+  position: fixed;
+  bottom:0;
+  right:0;
+  transform: rotate(-30deg);
+}
+
+#wavesL {
+  position: fixed;
+  bottom:0;
+  left:0;
+  transform: rotate(30deg);
+}
+
+#gameBox {
+  border-style: solid;
+  border-width: 2px; 
+  text-align: center; 
+  background-color: #ECF4F9;
+}
