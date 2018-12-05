@@ -1,8 +1,6 @@
 angular.module('PlayCtrl', []).controller('PlayController', function($scope, $auth, $http) {
 
     $scope.token = $auth.getToken();
-    $scope.track = "All I Want for Christmas is You"
-    $scope.artist = "Mariah Carey"
     $scope.trackid = ""
     $scope.guess = []
     
@@ -20,13 +18,13 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
         }).then(
             function (response) {
                 try {
-                cpright = response.data.body.message.body.lyrics.lyrics_copyright;
+                cpright = response.data.message.body.lyrics.lyrics_copyright;
                 
                 if (cpright == "Unfortunately we're not authorized to show these lyrics.") {
                     $scope.wordsWithBlanks = ["Unable to show lyrics for this song."]
                 } else {
                     console.log("Found lyrics successfully!");
-                    $scope.wordsWithBlanks = showTextWithBlanks(response.data.body.message.body.lyrics.lyrics_body, numBlanks);
+                    $scope.wordsWithBlanks = showTextWithBlanks(response.data.message.body.lyrics.lyrics_body, numBlanks);
                 } 
                 } catch {
                     console.log("Couldn't find the song.")

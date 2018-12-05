@@ -9,7 +9,7 @@ var cookieParser   = require('cookie-parser');
 var request = require('request');
 var client_id = "9847de7e050444c6a47dc18881b7af45";
 var client_secret = "33ee9b8881be482d8a1c97f68c5f2088";
-var database_password = ""
+var database_password = "UUll1!"
 let access_token;
 
 
@@ -24,7 +24,9 @@ var db = mongoose.connect('mongodb://tallulahkay:' + database_password + '@liste
 });
 
 var songSchema = new mongoose.Schema({
-    track: String
+    track: String,
+    artist: String,
+    lyrics: JSON
 })
     
 var Song = mongoose.model('Song', songSchema);
@@ -117,32 +119,33 @@ app.get('/searchSpotify', function (req, res) {
 app.get('/searchMusixmatch', function (req, res) {
     let track = req.query.q_track;
     let artist = req.query.q_artist;
-//    var search = Song.search({
-//        track: req.query.q_track,
-//        artist: req.query.q_artist
-//    }, function (err, docs) {
-//        if (!err) {
-//            console.log(docs);
-//            res.send(docs)
-//        }
-//    });
     var searchMusixmatch = {
         url: 'http://api.musixmatch.com/ws/1.1/matcher.lyrics.get?' + querystring.stringify(req.query),
         json: true
     };
-    request.get(searchMusixmatch, function (error, response, body) {
-        if (!error) {
-            Song.create({
-                track: track
-            }, function(err, track) {
-                if (err) return console.error(err);
-                console.log("saved!");
+    Song.find({track: track}, function(err, songs) {
+        console.log(songs);
+        if (songs.lyrics === undefined) {
+            request.get(searchMusixmatch, function (error, response, body) {
+                if (!error) {
+                    Song.create({
+                        track: track,
+                        artist: artist,
+                        lyrics: body
+                    }, function(err, track) {
+                        if (err) return console.error(err);
+                        console.log("saved!");
+                    });
+                    Song.find(function(err, songs) {
+                        if (err) return console.error(err);
+                        console.log(songs);
+                    })
+                    res.send(body);
+                }
             });
-            Song.find(function(err, songs) {
-                if (err) return console.error(err);
-                console.log(songs);
-            })
-            res.send(response);
+        } else {
+            console.log("songs", songs);
+            console.log("songs.lyrics:", songs.lyrics);
         }
     });
 });
