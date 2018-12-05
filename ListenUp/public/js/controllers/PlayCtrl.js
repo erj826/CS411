@@ -7,6 +7,8 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
     $scope.guess = []
     
     $scope.lyrics = function (track, artist, numBlanks) {
+        var x = document.getElementById("gameBox");
+        x.style.backgroundColor = "#ECF4F9";
         $http({
             method: 'GET',
             url: "/searchMusixmatch",
