@@ -123,28 +123,26 @@ app.get('/searchMusixmatch', function (req, res) {
         json: true
     };
     Song.find({track: track}, function(err, songs) {
-        console.log(songs);
-        if (songs.lyrics === undefined) {
+        if (songs[0] === undefined) {
             request.get(searchMusixmatch, function (error, response, body) {
                 if (!error) {
-                    Song.create({
-                        track: track,
-                        artist: artist,
-                        lyrics: body
-                    }, function(err, track) {
-                        if (err) return console.error(err);
-                        console.log("saved!");
-                    });
-                    Song.find(function(err, songs) {
-                        if (err) return console.error(err);
-                        console.log(songs);
-                    })
                     res.send(body);
+                    if (body.message.header.status_code == "404") {
+                        console.log("Couldn't find the song.");
+                    } else {
+                        Song.create({
+                            track: track,
+                            artist: artist,
+                            lyrics: body
+                        }, function(err, track) {
+                            if (err) return console.error(err);
+                            console.log("saved!");
+                        });
+                    }
                 }
             });
         } else {
-            console.log("songs", songs);
-            console.log("songs.lyrics:", songs.lyrics);
+            res.send(songs[0].lyrics);
         }
     });
 });

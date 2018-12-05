@@ -4,6 +4,10 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
     $scope.trackid = ""
     $scope.guess = []
     
+    function simplify (str) {
+        return str.toLowerCase().replace(/[^a-zA-Z ]/g, "");
+    }
+        
     $scope.lyrics = function (track, artist, numBlanks) {
         var x = document.getElementById("gameBox");
         x.style.backgroundColor = "#e5ffe5";
@@ -11,8 +15,8 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
             method: 'GET',
             url: "/searchMusixmatch",
             params: {
-                q_track: track,
-                q_artist: artist,
+                q_track: simplify(track),
+                q_artist: simplify(artist),
                 apikey: '74267314149a0851260eb83eafbf8f18'
             }
         }).then(
