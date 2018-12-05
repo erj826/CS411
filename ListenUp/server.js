@@ -9,9 +9,8 @@ var cookieParser   = require('cookie-parser');
 var request = require('request');
 var client_id = "9847de7e050444c6a47dc18881b7af45";
 var client_secret = "33ee9b8881be482d8a1c97f68c5f2088";
-var database_password = "listenup"
+var database_password = ""
 let access_token;
-
 
 var mongoose = require('mongoose')
 var db = mongoose.connect('mongodb://tallulahkay:' + database_password + '@listenup-shard-00-00-cqpm8.mongodb.net:27017,listenup-shard-00-01-cqpm8.mongodb.net:27017,listenup-shard-00-02-cqpm8.mongodb.net:27017/test?ssl=true&replicaSet=ListenUp-shard-0&authSource=admin&retryWrites=true', function(err, response) {
