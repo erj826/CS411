@@ -14,7 +14,13 @@
 		</div>
 		<br>
         <button ng-click="randomSong()">Pick Random Song</button><br><br>
-    </div>
+    <!--HINTTTTTTTT-->
+		<button id="gameOptionHint" style="display: none;" ng-click="hint()">&emsp;Hint&emsp;</button>
+
+        <div id="hintHidden" style="display: none;"><br>
+            <iframe id="playback" src="" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </div>
+	</div>
     </div>
 	
 	<div class="column">
@@ -25,7 +31,7 @@
             <button ng-click="lyrics(track, artist,3)">Medium</button>
             <button ng-click="lyrics(track, artist,5)">Hard</button>
         <br><br>
-       
+	   
         <div id="gameBox">
 
             <br>
@@ -50,11 +56,7 @@
     </div>
 
         <br><br><br>
-        <button id="gameOptionHint" style="display: none;" ng-click="hint()">&emsp;Hint&emsp;</button>
-
-        <div id="hintHidden" style="display: none;"><br>
-            <iframe id="playback" src="" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-        </div>
+        
 		
 		<div id="spotspace"></div>
 	    <img src="spot.png" height="30" width="30">

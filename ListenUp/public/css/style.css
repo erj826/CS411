@@ -77,6 +77,10 @@ text-align:center;
 	padding-top: 20px;
 }
 
+#spotspace1 {
+	padding-top: 30px;
+}
+
 #spotspace {
   padding-top: 20px;
 }
@@ -102,3 +106,15 @@ text-align:center;
   background-color: #ECF4F9;
   margin: auto;
 }
+
+#left {
+  position: relative;
+  top: 20%;
+}
+
+#gameOptionHint {
+	background-color: rgb(200,227,51);
+	color:black;
+}
+
+
