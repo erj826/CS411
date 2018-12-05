@@ -9,11 +9,7 @@ var cookieParser   = require('cookie-parser');
 var request = require('request');
 var client_id = "9847de7e050444c6a47dc18881b7af45";
 var client_secret = "33ee9b8881be482d8a1c97f68c5f2088";
-<<<<<<< HEAD
 var database_password = "UUll1!"
-=======
-var database_password = "lauren"
->>>>>>> 9851dab1c149d91e92d3e07b1f76693cb1a22ea6
 let access_token;
 
 var mongoose = require('mongoose')
