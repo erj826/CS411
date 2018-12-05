@@ -38,12 +38,14 @@ a {
   color: rgb(200,227,51);
   text-shadow: -2px 1px purple;
   background-color: transparent;
+  margin: auto;
   text-align: center;
   border-color: transparent;
   font-family: Calibri;
   font-weight:bold;
   font-style: italic;
   font-size: 32px;
+  width: 50%;
 }
 
 h2 {
@@ -67,11 +69,11 @@ text-align:center;
 }
 
 #titlespace {
-	padding-top: 30px;
+	padding-top: 20px;
 }
 
 #spotspace {
-  padding-top: 30px;
+  padding-top: 20px;
 }
 
 #wavesR {
@@ -93,4 +95,6 @@ text-align:center;
   border-width: 2px; 
   text-align: center; 
   background-color: #ECF4F9;
+  width: 50%;
+  margin: auto;
 }
