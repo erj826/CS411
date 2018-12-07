@@ -1,6 +1,10 @@
+html {
+    height: 100%;
+}
 body { 
   padding-top:50px; 
   background: linear-gradient(#3d4756, #3b35e0);
+  height: 100%
 }
 
 h1 {
