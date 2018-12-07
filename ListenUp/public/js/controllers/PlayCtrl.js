@@ -31,10 +31,12 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
                     $scope.wordsWithBlanks = showTextWithBlanks(response.data.message.body.lyrics.lyrics_body, numBlanks);
                 } 
                 } catch {
+                    alert("Invalid input. Try again!");
                     console.log("Couldn't find the song.")
                 }
             },
             function (response) {
+                alert("Invalid input. Try again!");
                 console.log("Didn't work!")
             }
         );
