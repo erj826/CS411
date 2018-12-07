@@ -91,6 +91,17 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
 
         return indexesToDelete;
     }
+    
+    $scope.randomSong = function () {
+        $http({
+            method: 'GET',
+            url: "/randomSong",
+            }).then(
+                function (response) {
+                    $scope.track = response.data.track;
+                    $scope.artist = response.data.artist;
+                });
+    };
 
     $scope.validate = function (guess) {
         for (var key in $scope.checkLines){

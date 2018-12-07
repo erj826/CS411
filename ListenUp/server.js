@@ -30,27 +30,6 @@ var songSchema = new mongoose.Schema({
     
 var Song = mongoose.model('Song', songSchema);
 
-app.post('/saveSong', function(req, res) {
-    var song = new Song(req.body);
-    song.save()
-        .then(item => {
-        res.send("item saved to database");
-    })
-    .catch(err => {
-        res.status(400).send("unable to save to database");
-    })
-});
-
-app.get('/getSong', function(req,res){
-    model.find({}, function(err,data){
-        if(err) {
-            res.send(err);
-        } else {
-            res.send(data);
-        }
-    });
-})
-
 // configuration ===========================================
 
 var port = process.env.PORT || 8080; // set our port
@@ -146,6 +125,15 @@ app.get('/searchMusixmatch', function (req, res) {
         }
     });
 });
+
+app.get('/randomSong', function (req, res) {
+    Song.count().exec(function (err, count) {
+        var random = Math.floor(Math.random()*count)
+        Song.findOne().skip(random).exec(function (err, result) {
+            res.send(result);
+        })
+    }
+)});
 
 // frontend routes         =========================================================
 // route to handle all angular requests
