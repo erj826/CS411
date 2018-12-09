@@ -13,7 +13,8 @@ var client_id = sensitive.client_id;
 var client_secret = sensitive.client_secret;
 var database_password = sensitive.database_password;
 
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
+var mongooseIncrement = require('mongoose-increment');
 var db = mongoose.connect('mongodb://tallulahkay:' + database_password + '@listenup-shard-00-00-cqpm8.mongodb.net:27017,listenup-shard-00-01-cqpm8.mongodb.net:27017,listenup-shard-00-02-cqpm8.mongodb.net:27017/test?ssl=true&replicaSet=ListenUp-shard-0&authSource=admin&retryWrites=true', function(err, response) {
     if (err){
         console.log(err);
@@ -30,6 +31,13 @@ var songSchema = new mongoose.Schema({
 })
     
 var Song = mongoose.model('Song', songSchema);
+
+var userSchema = new mongoose.Schema({
+    name: String,
+    score: Number
+})
+
+var User = mongoose.model('User', userSchema);
 
 // configuration ===========================================
 
@@ -52,25 +60,33 @@ app.post('/auth/spotify', function(req, resp) {
   resp.header('Access-Control-Allow-Headers', 'X-Requested-With');
 
   // your application requests authorization
-  var authOptions = {
-    url: 'https://accounts.spotify.com/api/token',
-    headers: {
-      Authorization:
-        'Basic ' +
-        new Buffer(client_id + ':' + client_secret).toString('base64')
-    },
-    form: {
-      grant_type: 'client_credentials'
-    },
-    json: true
-  };
+    var authOptions = {
+        url: 'https://accounts.spotify.com/api/token',
+        headers: {
+          Authorization:
+            'Basic ' +
+            new Buffer(client_id + ':' + client_secret).toString('base64')
+        },
+        form: {
+            grant_type: 'client_credentials'
+        },
+        json: true
+    };
 
-  request.post(authOptions, function(error, response, body) {
-    if (!error && response.statusCode === 200) {
-        access_token = body.access_token;
-        resp.json({ token: body.access_token });
-    }
-  });
+    request.post(authOptions, function(error, response, body) {
+        if (!error && response.statusCode === 200) {
+            access_token = body.access_token;
+            User.find({user: access_token}, function (err, user) {
+                if (err) {
+                    User.create({
+                        user: access_token,
+                        score: 0
+                    });
+                }
+            });
+            resp.json({ token: access_token });
+        };
+    });
 });
 
 app.get('/searchSpotify', function (req, res) {
@@ -135,6 +151,11 @@ app.get('/randomSong', function (req, res) {
         })
     }
 )});
+
+app.get('/updateScore', function(req, res) {
+    User.update({name: access_token}, {$inc: {score: 1}});
+    console.log("incremented");
+});
 
 // frontend routes         =========================================================
 // route to handle all angular requests

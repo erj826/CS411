@@ -8,7 +8,7 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
         return str.toLowerCase().replace(/[^a-zA-Z ]/g, "");
     }
         
-    $scope.lyrics = function (track, artist, numBlanks) {
+    function lyrics (track, artist, numBlanks) {
         var x = document.getElementById("gameBox");
         x.style.backgroundColor = "#e5ffe5";
         $http({
@@ -40,6 +40,16 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
                 console.log("Didn't work!")
             }
         );
+    }
+
+    $scope.val = function (track, artist, numBlanks) {
+        if (track == undefined) {
+            alert("Must enter a song! Try again!");
+        } else if (artist == undefined) {
+            alert("Must enter an artist! Try again!");
+        } else {
+            lyrics(track, artist, numBlanks);
+        }
     }
 
 
@@ -119,6 +129,10 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
         var x = document.getElementById("gameBox");
         if (score == true) {
             x.style.backgroundColor = "#98f441";
+            $http({
+                method: 'GET',
+                url: "/updateScore",
+            })
         } else {
             x.style.backgroundColor = "#f45c42";
         }
