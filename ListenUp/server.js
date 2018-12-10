@@ -32,13 +32,6 @@ var songSchema = new mongoose.Schema({
     
 var Song = mongoose.model('Song', songSchema);
 
-var userSchema = new mongoose.Schema({
-    name: String,
-    score: Number
-})
-
-var User = mongoose.model('User', userSchema);
-
 // configuration ===========================================
 
 var port = process.env.PORT || 8080; // set our port
@@ -76,14 +69,6 @@ app.post('/auth/spotify', function(req, resp) {
     request.post(authOptions, function(error, response, body) {
         if (!error && response.statusCode === 200) {
             access_token = body.access_token;
-            User.find({user: access_token}, function (err, user) {
-                if (err) {
-                    User.create({
-                        user: access_token,
-                        score: 0
-                    });
-                }
-            });
             resp.json({ token: access_token });
         };
     });
@@ -151,11 +136,6 @@ app.get('/randomSong', function (req, res) {
         })
     }
 )});
-
-app.get('/updateScore', function(req, res) {
-    User.update({name: access_token}, {$inc: {score: 1}});
-    console.log("incremented");
-});
 
 // frontend routes         =========================================================
 // route to handle all angular requests

@@ -129,10 +129,6 @@ angular.module('PlayCtrl', []).controller('PlayController', function($scope, $au
         var x = document.getElementById("gameBox");
         if (score == true) {
             x.style.backgroundColor = "#98f441";
-            $http({
-                method: 'GET',
-                url: "/updateScore",
-            })
         } else {
             x.style.backgroundColor = "#f45c42";
         }
